@@ -6,7 +6,7 @@ Socket.IO is a JavaScript library that helps you build real-time features easily
 
 - Live chat
 - Live notifications
-- Online/offline status
+- Online/offline live status
 - Live updates (like counting likes instantly)
 - Multiplayer games
 - Live location sharing
@@ -21,16 +21,14 @@ Client (Browser / Mobile App)
 Server (Node.js)
 ```
 
-# 3-Installation and Basic Setup of Socket.IO
+# 3-Installation 
 
-##  Installation
-
-### Install Server (Node.js)
+## Install Server (Node.js)
 ```bash
 npm install socket.io
 ```
 
-### Install Client (Browser)
+## Install Client (Browser)
 
 **Use CDN:**
 ```html
@@ -42,11 +40,12 @@ npm install socket.io
 npm install socket.io-client
 ```
 
-##  4-Basic Setup
+#  4-Basic Setup
 
-### 4.1 Server Code (Node.js)
+## 4.1 Server Code (Node.js)
 
 Create a file named `server.js`:
+
 ```js
 const express = require("express");
 const http = require("http");
@@ -58,6 +57,7 @@ const io = new Server(server);
 
 io.on("connection", (socket) => {
     console.log("A user connected:", socket.id);
+// rest listener function will create here
 });
  
 server.listen(3000, () => {
@@ -79,7 +79,7 @@ Create a file named `index.html`:
 </script>
 ```
 
-# 1. What Are Events?
+# 5. What Are Events?
 
 Socket.IO works using events.  
 Events allow the client and server to send messages to each other.
@@ -96,9 +96,9 @@ We use:
 - `socket.emit("eventName", data)` → Send data
 - `socket.on("eventName", callback)` → Receive data
 
----
 
-# 2. Send Data From Client → Server
+# 6. Send Data From Client → Server
+
 **Client (browser):**
 ```js
 socket.emit("hello", "I am the client");
@@ -120,7 +120,7 @@ Client says: I am the client
 
 ---
 
-# 3. Send Data From Server → Client
+# 7. Send Data From Server → Client
 **Server:**
 ```js
 io.on("connection", (socket) => {
@@ -142,7 +142,7 @@ Welcome to the server!
 
 ---
 
-# 4. Sending Objects (not just strings)
+# 7. Sending Objects (not just strings)
 Socket.IO can send any JavaScript object.
 
 **Client:**
@@ -163,7 +163,7 @@ socket.on("user_details", (user) => {
 
 ---
 
-# 5. Broadcasting Messages
+# 8. Broadcasting Messages
 
 Broadcasting = send message to all clients except the sender.
 
@@ -190,7 +190,7 @@ socket.on("receiveMsg", (msg) => {
 
 ---
 
-# 6. Send Message to ALL Clients (including sender)
+# 9. Send Message to ALL Clients (including sender)
 **Server:**
 ```js
 io.emit("notification", "New user joined!");
@@ -205,7 +205,7 @@ socket.on("notification", (msg) => {
 
 ---
 
-# 7. Acknowledgements (Confirmation Response)
+# 10. Acknowledgements (Confirmation Response)
 
 Acknowledgement = server sends a callback response to client.
 
@@ -232,7 +232,7 @@ Server replied: Message received!
 
 ---
 
-# 8. Disconnect Event
+# 11. Disconnect Event
 
 Server detects when a user leaves.
 
@@ -243,9 +243,9 @@ socket.on("disconnect", () => {
 });
 ```
 
-# 2. How to Join a Room
+# 12. How to Join a Room
 
-### Server Side
+## Server Side
 ```js
 io.on("connection", (socket) => {
     socket.on("join_room", (roomName) => {
@@ -255,7 +255,7 @@ io.on("connection", (socket) => {
 });
 ```
 
-### Client Side
+## Client Side
 ```js
 socket.emit("join_room", "RoomA");
 ```
@@ -267,7 +267,7 @@ User zse78js joined room RoomA
 
 ---
 
-# 3. Send Message ONLY Inside a Room
+# 13. Send Message ONLY Inside a Room
 
 ### Server
 ```js
@@ -297,14 +297,14 @@ socket.on("room_msg", (msg) => {
 
 ---
 
-# 4. Leave a Room
+# 14. Leave a Room
 ```js
 socket.leave("RoomA");
 ```
 
 ---
 
-# 5. Private Messaging (User to User)
+# 15. Private Messaging (User to User)
 
 Each socket has a unique ID, e.g.,  
 `socket.id = "xa93js8d"`
@@ -338,7 +338,7 @@ socket.on("private_msg", (data) => {
 
 ---
 
-# 6. How to Know All Connected Users
+# 16. How to Know All Connected Users
 
 ### Server
 ```js
