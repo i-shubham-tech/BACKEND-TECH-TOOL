@@ -1,75 +1,25 @@
 # Generative AI
 
-## Table of Contents
 
-1. [What is GenAI (Foundation)](#1-what-is-genai-foundation)
-   - Definition (Industry-level)
-   - What GenAI is NOT
-   - What GenAI actually does
+# Table of Contents
 
-2. [Core GenAI Architecture (Mental Model)](#2-core-genai-architecture-mental-model)
-
-3. [Basic GenAI Setup (Hands-On)](#3-basic-genai-setup-hands-on)
-   - Required Skills
-   - Minimal Node.js Setup
-   - Sample Code
-
-4. [Models (What to Use & Why)](#4-models-what-to-use-why)
-
-5. [Parameters (Control Behavior)](#5-parameters-control-behavior)
-   - Core Parameters
-   - Practical Guidance
-
-6. [Chat Working (Memory Truth)](#6-chat-working-memory-truth)
-   - Important Reality
-   - How to Manage Memory
-
-7. [Prompt Engineering (Reality)](#7-prompt-engineering-reality)
-   - Good Prompt Structure
-   - Examples
-   - Tips
-
-8. [Tools (Function Calling)](#8-tools-function-calling)
-   - Why Tools Exist
-   - Tool Flow
-   - Example Tool
-
-9. [Embeddings (Core Concept)](#9-embeddings-core-concept)
-   - What Embeddings Are
-   - Why Embeddings Matter
-   - Create Embedding Example
-
-10. [Vector Databases](#10-vector-databases)
-    - Why Normal DB Fails
-    - Workflow
-    - Popular Options
-
-11. [RAG (Retrieval Augmented Generation)](#11-rag-retrieval-augmented-generation)
-    - Most Important Concept
-    - RAG Flow
-    - Industry Use
-
-12. [Output Control & Structure](#12-output-control-structure)
-    - Force JSON Output
-    - Uses
-
-13. [Agents (Advanced)](#13-agents-advanced)
-    - Definition
-    - Use Cases
-
-14. [Security & Best Practices](#14-security-best-practices)
-    - Recommendations
-
-15. [What to Build (Mandatory Path)](#15-what-to-build-mandatory-path)
-    - Beginner
-    - Intermediate
-    - Advanced
-
-16. [Interview Expectations (2025)](#16-interview-expectations-2025)
-    - Topics to Explain
-
-17. [Final Mindset (Most Important)](#17-final-mindset-most-important)
-    - Key Qualities of GenAI Engineers
+1. [What is GenAI (Foundation)](#1%EF%B8%8F⃣-what-is-genai-foundation)
+2. [Core GenAI Architecture (Mental Model)](#2%EF%B8%8F⃣-core-genai-architecture-mental-model)
+3. [Basic GenAI Setup (Hands-On)](#3%EF%B8%8F⃣-basic-genai-setup-hands-on)
+4. [Models (What to Use & Why)](#4%EF%B8%8F⃣-models-what-to-use--why)
+5. [Parameters (Control Behavior)](#5%EF%B8%8F⃣-parameters-control-behavior)
+6. [Chat Working (Memory Truth)](#6%EF%B8%8F⃣-chat-working-memory-truth)
+7. [Prompt Engineering (Reality)](#7%EF%B8%8F⃣-prompt-engineering-reality)
+8. [Tools (Function Calling)](#8%EF%B8%8F⃣-tools-function-calling)
+9. [Embeddings (Core Concept)](#9%EF%B8%8F⃣-embeddings-core-concept)
+10. [Vector Databases](#-vector-databases)
+11. [RAG (Retrieval Augmented Generation)](#1%EF%B8%8F⃣1%EF%B8%8F⃣-rag-retrieval-augmented-generation)
+12. [Output Control & Structure](#1%EF%B8%8F⃣2%EF%B8%8F⃣-output-control--structure)
+13. [Agents (Advanced)](#1%EF%B8%8F⃣3%EF%B8%8F⃣-agents-advanced)
+14. [Security & Best Practices](#1%EF%B8%8F⃣4%EF%B8%8F⃣-security--best-practices)
+15. [What to Build (Mandatory Path)](#1%EF%B8%8F⃣5%EF%B8%8F⃣-what-to-build-mandatory-path)
+16. [Interview Expectations (2025)](#1%EF%B8%8F⃣6%EF%B8%8F⃣-interview-expectations-2025)
+17. [Final Mindset (Most Important)](#1%EF%B8%8F⃣7%EF%B8%8F⃣-final-mindset-most-important)
 
 ## 1️⃣ WHAT IS GENAI (FOUNDATION)
 
