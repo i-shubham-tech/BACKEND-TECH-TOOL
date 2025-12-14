@@ -119,13 +119,15 @@ console.log(res.choices[0].message.content);
 
 ## 5️⃣ PARAMETERS (CONTROL BEHAVIOR)
 ### Core Parameters (Must Know)
-| Parameter     | Purpose                        |
-|---------------|--------------------------------|
-| model         | Capability & cost              |
-| temperature   | Creativity                     |
-| max_tokens    | Output size                    |
-| system        | Behavior control               |
-| top_p         | Token probability              |
+| Parameter     | Purpose                        | defination                        |Standard|
+|---------------|--------------------------------|-----------------------------------|--------|                       
+| model         | Capability & cost              | A model is a trained AI system that learns patterns from data and generates the most likely output based on an input.|gpt4.o|
+| temperature   | Creativity                     | Controls randomness and creativity in the output|0.2-0.7|
+| top_p         | Token probability              | Limits word selection to the most probable tokens whose total probability equals top_p.|1|
+| max_tokens    | Output size                    | Limits the maximum length of the model’s response.|0-700-1500|
+| frequency_penalty| word repetation                  | Reduces repeated use of the same words in the response..|0.2-0.6|
+|presence_penalty| New topic                    | Encourages the model to introduce new topics instead of repeating the same ideas.|0.2-0.6|
+
 
 ### Practical Guidance
 | Use Case        | Temperature  |
