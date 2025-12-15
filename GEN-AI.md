@@ -10,7 +10,7 @@
 5. [Parameters (Control Behavior)](#5%EF%B8%8F⃣-parameters-control-behavior)
 6. [Chat Working (Memory Truth)](#6%EF%B8%8F⃣-chat-working-memory-truth)
 7. [Prompt Engineering (Reality)](#7%EF%B8%8F⃣-prompt-engineering-reality)
-8. [Tools (Function Calling)](#ai-tool-integration-workflow)
+8. [Tools (Function Calling)](#8%EF%B8%8F⃣-ai-tool-integration-workflow)
 9. [Embeddings (Core Concept)](#9%EF%B8%8F⃣-embeddings-core-concept)
 10. [Vector Databases](#-vector-databases)
 11. [RAG (Retrieval Augmented Generation)](#1%EF%B8%8F⃣1%EF%B8%8F⃣-rag-retrieval-augmented-generation)
@@ -182,7 +182,7 @@ Limit to 150 words.
 
 ---
 
-## AI Tool Integration Workflow
+## 8️⃣ AI Tool Integration Workflow
 
 ### STEP 1️⃣ Create tools Object
 
