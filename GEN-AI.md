@@ -10,7 +10,7 @@
 5. [Parameters (Control Behavior)](#5%EF%B8%8F⃣-parameters-control-behavior)
 6. [Chat Working (Memory Truth)](#6%EF%B8%8F⃣-chat-working-memory-truth)
 7. [Prompt Engineering (Reality)](#7%EF%B8%8F⃣-prompt-engineering-reality)
-8. [Tools (Function Calling)](#8%EF%B8%8F⃣-tools-function-calling)
+8. [Tools (Function Calling)](#ai-tool-integration-workflow)
 9. [Embeddings (Core Concept)](#9%EF%B8%8F⃣-embeddings-core-concept)
 10. [Vector Databases](#-vector-databases)
 11. [RAG (Retrieval Augmented Generation)](#1%EF%B8%8F⃣1%EF%B8%8F⃣-rag-retrieval-augmented-generation)
@@ -182,28 +182,103 @@ Limit to 150 words.
 
 ---
 
-## 8️⃣ TOOLS (FUNCTION CALLING)
-### Why Tools Exist
-- LLM cannot:
-  - Call APIs
-  - Read DB
-  - Access live data
+## AI Tool Integration Workflow
 
-### Tool Flow
-User → LLM → Tool Decision → Your Function → LLM → Final Answer
+### STEP 1️⃣ Create tools Object
 
-### Example Tool
+(Tell AI what functions exist)
+
 ```json
-{
-  name: "getUser",
-  description: "Fetch user data",
-  parameters: {
-    userId: "string"
+tools = [
+  {
+    type: "function",                 // Declares a callable tool
+    function: {
+      name: "getUserById",             // Must match backend function
+      description: "Fetch user by ID", // Helps AI decide when to call
+      parameters: {
+        type: "object",                // Arguments container
+        properties: {
+          userId: {                    // Argument name
+            type: "string",
+            description: "User ID"
+          }
+        },
+        required: ["userId"]           // Prevents empty arguments
+      }
+    }
   }
+]
+```
+
+### STEP 2️⃣ Send tools to OpenAI + tool_choice
+
+```js
+openai.chat.completions.create({
+  model: "gpt-4.1",
+  messages,
+  tools,
+  tool_choice: "auto"   // Let AI decide
+});
+```
+
+### STEP 3️⃣ Check Tool Call
+
+```js
+assistantMsg = response.choices[0].message;
+
+if (assistantMsg.tool_calls) {
+  console.log(tool is called)
 }
 ```
 
-📌 Tools turn LLM into real applications
+### STEP 4️⃣ Tool Working (Routing Logic)
+
+```js
+toolCall = assistantMsg.tool_calls[0];
+
+functionName = toolCall.function.name;
+args = JSON.parse(toolCall.function.arguments);
+
+// toolCall tells:
+// - Which tool is called
+// - What arguments AI extracted
+```
+
+### STEP 5️⃣ Execute Backend Function
+
+```js
+if (functionName === "getUserById") {
+  result = await getUserById(args);
+}
+
+// Backend does real work (DB, API, logic)
+```
+
+### STEP 6️⃣ Form Tool Response Message
+
+```js
+toolResponse = {
+  role: "tool",
+  tool_call_id: toolCall.id,   // Must match tool call ID
+  content: JSON.stringify(result)
+};
+```
+
+### STEP 7️⃣ Push Messages into Context (ORDER MATTERS)
+
+```js
+messages.push(assistantMsg);   // Tool request Jisne tool call kara
+messages.push(toolResponse);   // Tool result tool ka response
+```
+
+## STEP 8️⃣ Call OpenAI Again (Final Answer)
+
+```js
+final = await openai.chat.completions.create({
+  model: "gpt-4.1",
+  messages
+});
+```
 
 ---
 
